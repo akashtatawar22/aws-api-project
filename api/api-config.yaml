@@ -1,0 +1,116 @@
+openapi: 3.0.1
+info:
+  title: AWS VPC Management API
+  description: API for managing VPCs and retrieving stored results from DynamoDB.
+  version: 1.0.0
+servers:
+  - url: https://fffw4d32ie.execute-api.us-east-1.amazonaws.com/dev-auth
+    description: Development Environment
+paths:
+  /vpcs:
+    get:
+      summary: Get all VPCs
+      description: Retrieves a list of all VPCs stored in DynamoDB.
+      security:
+        - cognitoAuth: []
+      responses:
+        "200":
+          description: Successful response with a list of VPCs.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    vpcId:
+                      type: string
+                      example: vpc-07550496caad705fe
+                    vpcCidr:
+                      type: string
+                      example: "10.0.0.0/16"
+                    subnets:
+                      type: array
+                      items:
+                        type: string
+                        example: subnet-061ff914b51f56b4e
+    post:
+      summary: Create a new VPC entry
+      description: Adds a new VPC and its subnets to the database.
+      security:
+        - cognitoAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                VPC ID:
+                  type: string
+                  example: vpc-021906a764f995f90
+                VPC CIDR:
+                  type: string
+                  example: "10.0.0.0/16"
+                Subnet IDs:
+                  type: array
+                  items:
+                    type: string
+                    example: subnet-0fdcfd2f3c28d74af
+      responses:
+        "201":
+          description: VPC entry created successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  vpcCidr:
+                    type: string
+                    example: "10.0.0.0/16"
+                  subnetCidrs:
+                    type: array
+                    items:
+                      type: string
+                      example: "10.0.1.0/24"
+
+  /vpcs/{vpcId}:
+    get:
+      summary: Get a specific VPC by ID
+      description: Retrieves details of a specific VPC based on the given VPC ID.
+      security:
+        - cognitoAuth: []
+      parameters:
+        - name: vpcId
+          in: path
+          required: true
+          schema:
+            type: string
+            example: vpc-07550496caad705fe
+      responses:
+        "200":
+          description: Successful response with VPC details.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  vpcId:
+                    type: string
+                    example: vpc-07550496caad705fe
+                  vpcCidr:
+                    type: string
+                    example: "10.0.0.0/16"
+                  subnets:
+                    type: array
+                    items:
+                      type: string
+                      example: subnet-061ff914b51f56b4e
+
+components:
+  securitySchemes:
+    cognitoAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: "Authorization token obtained via Cognito login."
