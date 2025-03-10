@@ -26,5 +26,5 @@ GET https://fffw4d32ie.execute-api.us-east-1.amazonaws.com/dev-auth/vpcs?vpcId=<
 POST https://fffw4d32ie.execute-api.us-east-1.amazonaws.com/dev-auth/vpcs
 
 ## HEADER ###
-GET TOKEN BY LOGIN INTO WEBSITE AND SIGNUP. THEN AQUIRE TOKEN
-NOTE - WEBSITE WILL BE SHARED DURING DEMO
+Need to aquire token by login into website and signup or signin. Only Sign in user is allowed to access the api's. Token should be pass in header Authorization
+NOTE - Website to login will be shared during demo.
