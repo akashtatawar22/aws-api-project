@@ -8,7 +8,6 @@ This project provides a REST API to create, store, and retrieve AWS VPCs and the
 **Retrieve all VPCs** stored in the database.
 **Fetch a specific VPC** using its ID.
 **Authentication via AWS Cognito** (APItokens required).
-**Serverless deployment using AWS services**.
 
 ---
 
