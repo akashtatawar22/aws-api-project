@@ -15,16 +15,16 @@ This project provides a REST API to create, store, and retrieve AWS VPCs and the
 
 ###**Get All VPCs**
 - **URL:**  
-GET https://fffw4d32ie.execute-api.us-east-1.amazonaws.com/dev-auth/vpcs
+GET https://zmieuqxc1f.execute-api.us-east-1.amazonaws.com/prod/vpcs
 
 ###**Fetches a specific VPC by its ID.**
 - **URL:**  
-GET https://fffw4d32ie.execute-api.us-east-1.amazonaws.com/dev-auth/vpcs?vpcId=<VPC_ID>
+GET https://zmieuqxc1f.execute-api.us-east-1.amazonaws.com/prod/vpcs?vpcId=<VPC_ID>
 
 ###**add vpc with multiple subnets**
 - **URL:**  
-POST https://fffw4d32ie.execute-api.us-east-1.amazonaws.com/dev-auth/vpcs
+POST https://zmieuqxc1f.execute-api.us-east-1.amazonaws.com/prod/vpcs
 
 ## HEADER ###
 Need to aquire token by login into website and signup or signin. Only Sign in user is allowed to access the api's. Token should be pass in header Authorization
-NOTE - Website to login will be shared during demo.
+NOTE - Cognito website is created for user sign up and sign in
